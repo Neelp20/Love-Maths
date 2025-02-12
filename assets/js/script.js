@@ -15,6 +15,13 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+
+    // after entering the answer press enter and it shows the result
+    document.getElementById("answer-box").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+    });
     runGame("addition");
 });
 
@@ -23,6 +30,10 @@ document.addEventListener("DOMContentLoaded", function() {
  * and after the user's answer has been processed
  */
 function runGame(gameType) {
+// after submitting the answer, answer box should be empty for next, ready to put another answer
+    document.getElementById("answer-box").value = "";
+    // we need the curser to be on answer box when we refresh , for that have used focus
+    document.getElementById("answer-box").focus();
 
     // Creates two random numbers between 1 and 25
     let num1 = Math.floor(Math.random() * 25) + 1;
